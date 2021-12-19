@@ -22,6 +22,8 @@ function displayHourBlocks() {
         let textArea = $('<textarea class="description col-10">');
         row.append(textArea);
         let saveBtn = $('<button class="saveBtn col-1">');
+        let icon = $('<i class="far fa-save"></i>');
+        saveBtn.append(icon);
         row.append(saveBtn);
     }
 }
