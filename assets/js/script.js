@@ -4,28 +4,37 @@
 // let currentTime = moment();
 // console.log(currentTime.get());
 
-let hoursArray = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
-function displayDate() {
+let textArray = ['', '', '', '', '', '', '', '', ''];
+
+function displayDay() {
     let currentDate = moment(new Date);
     let formattedDate = currentDate.format('dddd, MMMM Do');
     $('#currentDay').text(formattedDate);
 }
 
-displayDate();
+displayDay();
 
 function displayHourBlocks() {
-    for (time of hoursArray) {
-        let row = $('<div class="row time-block">');
-        let hour = $('<div class="hour col-1">' + time + '</div>');
-        row.append(hour);
-        $('.container').append(row);
-        let textArea = $('<textarea class="description col-10">');
-        row.append(textArea);
-        let saveBtn = $('<button class="saveBtn col-1">');
-        let icon = $('<i class="far fa-save"></i>');
-        saveBtn.append(icon);
-        row.append(saveBtn);
+    for (times of textArray) {
+
     }
 }
 
+
+function relativeTime(num) {
+    if (num < 9) {
+        num += 12;
+    }
+
+    if (num < moment().format('H')) {
+        return 'past';
+    } else if (num == moment().format('H')) {
+        return 'present';
+    } else {
+        return 'future';
+    }
+}
 displayHourBlocks();
+
+
+localStorage.setItem('tasks', JSON.stringify(textArray));
