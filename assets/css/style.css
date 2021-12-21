@@ -1,9 +1,10 @@
+/* styles for entire body of page */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
 }
-
+/* styles for text areas to enter tasks */
 textarea{
   background: transparent;
   border: none;
@@ -12,7 +13,7 @@ textarea{
   border-left: 1px solid black;
   padding: 10px;
 }
-
+/* styles for heading */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -25,35 +26,42 @@ textarea{
   white-space: pre-wrap;
 }
 
+/* styles for each hour of the day */
 .time-block{
   text-align: center;
   border-radius: 15px;
 }
 
+/* styles for each row */
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
 }
 
+/* styles for hour itself */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
 }
 
+/* changes to grey when current hour is past */
 .past {
   background-color: #d3d3d3;
 }
 
+/* changes to red when this block is the current hour */
 .present {
   background-color: #ff6961;
 }
 
+/* changes to green when this block is past the current hour */
 .future {
   background-color: #77dd77;
 }
 
+/* styles for save button */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
@@ -62,6 +70,7 @@ textarea{
   color: white;
 }
 
+/* styles when save button is hovered over */
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
