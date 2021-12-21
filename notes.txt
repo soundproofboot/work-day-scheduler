@@ -1,0 +1,6 @@
+DISPLAY TASKS FUNCTION
+
+I want to loop through the array of hours of the DISPLAY
+grab obj.TASK
+grab correct row's text area
+make that text areas text = obj.task

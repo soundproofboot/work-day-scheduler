@@ -4,7 +4,40 @@
 // let currentTime = moment();
 // console.log(currentTime.get());
 
-let textArray = ['', '', '', '', '', '', '', '', ''];
+let tasksArray = [{
+    militaryTime: 9,
+    task: '',
+},{
+    militaryTime: 10,
+    task: '',
+},{
+    militaryTime: 11,
+    task: '',
+
+},{
+    militaryTime: 12,
+    task: '',
+
+},{
+    militaryTime: 13,
+    task: '',
+
+},{
+    militaryTime: 14,
+    task: '',
+
+},{
+    militaryTime: 15,
+    task: '',
+
+},{
+    militaryTime: 16,
+    task: '',
+
+},{
+    militaryTime: 17,
+    task: '',
+}]
 
 function displayDay() {
     let currentDate = moment(new Date);
@@ -14,27 +47,42 @@ function displayDay() {
 
 displayDay();
 
-function displayHourBlocks() {
-    for (times of textArray) {
-
+function displayTasks() {
+    if (localStorage.tasks) {
+        let fromStorage = JSON.parse(localStorage.tasks);
+    let arrayOfHours = $('textarea');
+    for (let i = 0; i < fromStorage.length; i++) {
+        arrayOfHours[i].value = fromStorage[i].task
     }
-}
-
-
-function relativeTime(num) {
-    if (num < 9) {
-        num += 12;
-    }
-
-    if (num < moment().format('H')) {
-        return 'past';
-    } else if (num == moment().format('H')) {
-        return 'present';
     } else {
-        return 'future';
+        localStorage.tasks = JSON.stringify('tasks', tasksArray)
     }
 }
-displayHourBlocks();
 
+function saveItems() {
+    let textAreas = $('textarea');
+    for (let i = 0; i < textAreas.length; i++) {
+        let currentText = textAreas[i].value;
+        tasksArray[i].task = currentText;
+        localStorage.setItem('tasks', JSON.stringify(tasksArray));
+    }
+}
 
-localStorage.setItem('tasks', JSON.stringify(textArray));
+function relativeColors() {
+    let currentHour = moment().format('H');
+    let textAreas = $('textarea');
+    for (let i = 0; i < textAreas.length; i++) {
+        if (tasksArray[i].militaryTime < currentHour) {
+            textAreas[i].classList.add('past');
+        } else if (tasksArray[i].militaryTime === currentHour) {
+            textAreas[i].classList.add('present');
+        } else {
+            textAreas[i].classList.add('future');
+
+        }
+    }
+}
+$('button').on('click', saveItems);
+displayTasks();
+relativeColors();
+
