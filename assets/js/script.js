@@ -69,20 +69,30 @@ function saveItems() {
 }
 
 function relativeColors() {
+    console.log('it went');
     let currentHour = moment().format('H');
     let textAreas = $('textarea');
     for (let i = 0; i < textAreas.length; i++) {
         if (tasksArray[i].militaryTime < currentHour) {
             textAreas[i].classList.add('past');
-        } else if (tasksArray[i].militaryTime === currentHour) {
+            textAreas[i].classList.remove('present');
+            textAreas[i].classList.remove('future');
+
+        } else if (tasksArray[i].militaryTime == currentHour) {
             textAreas[i].classList.add('present');
+            textAreas[i].classList.remove('past');
+            textAreas[i].classList.remove('future');
+
         } else {
             textAreas[i].classList.add('future');
-
+            textAreas[i].classList.remove('past');
+            textAreas[i].classList.remove('present');
         }
     }
 }
+
+relativeColors();
+var colorTimer = setInterval(relativeColors, 60000);
 $('button').on('click', saveItems);
 displayTasks();
-relativeColors();
 
