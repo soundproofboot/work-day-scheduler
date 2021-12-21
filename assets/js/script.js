@@ -85,7 +85,6 @@ function saveItems() {
 
 // function to set the colors relative to the current time
 function relativeColors() {
-    console.log('it went');
     // grabs the current hour with moment and formats to military time
     let currentHour = moment().format('H');
     // grabs all textareas on the page
